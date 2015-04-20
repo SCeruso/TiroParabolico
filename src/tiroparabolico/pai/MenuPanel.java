@@ -1,5 +1,10 @@
 package tiroparabolico.pai;
-
+/**
+ * @author Sabato Ceruso
+ * mail: sab7093@gmail.com
+ * Programación de aplicaciones interactivas.
+ * Universiad de La Laguna, Santa Cruz de Tenerife, España.
+ */
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -17,7 +22,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
-
+/**
+ * Clase contenedora del menu GUI.
+ * @author Sabato
+ *
+ */
 public class MenuPanel extends JPanel {
 	private JButton reset;
 	private JButton lanzar;
@@ -26,7 +35,7 @@ public class MenuPanel extends JPanel {
 	private JButton color2;
 	private JSlider vel;
 	
-	private TiroParabolicoFrame containerFrame;
+	private TiroParabolicoFrame containerFrame;			// Componente a cambiar.
 	
 	public MenuPanel(TiroParabolicoFrame parent) {
 		setContainerFrame(parent);
@@ -134,6 +143,11 @@ public class MenuPanel extends JPanel {
 
 	
 	}
+	/**
+	 * Manejadores para los botones.
+	 * @author Sabato
+	 *
+	 */
 	class ButtonsHandler implements ActionListener {
 
 		@Override

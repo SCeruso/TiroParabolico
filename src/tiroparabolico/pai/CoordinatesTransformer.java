@@ -1,7 +1,17 @@
 package tiroparabolico.pai;
-
+/**
+ * @author Sabato Ceruso
+ * mail: sab7093@gmail.com
+ * Programación de aplicaciones interactivas.
+ * Universiad de La Laguna, Santa Cruz de Tenerife, España.
+ */
 import javafx.geometry.Point2D;
-
+/**
+ * Clase ocupada de transformar coordenadas de un sistema a otro y viceversa,
+ * aplicando un factor de escala.
+ * @author Sabato
+ *
+ */
 public class CoordinatesTransformer {
 	private int coordX;
 	private int coordY;
@@ -28,6 +38,10 @@ public class CoordinatesTransformer {
 	public Point2D untransform(Point2D point) {
 		return new Point2D ((int)( (point.getX() - getCoordX()) / getEscala()), (int)(-point.getY() + getCoordY()));
 	}
+	/**
+	 * Getters y Setters.
+	 * @return
+	 */
 	public int getCoordX() {
 		return coordX;
 	}

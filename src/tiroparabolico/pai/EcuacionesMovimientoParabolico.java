@@ -1,7 +1,17 @@
 package tiroparabolico.pai;
-
+/**
+ * @author Sabato Ceruso
+ * mail: sab7093@gmail.com
+ * Programación de aplicaciones interactivas.
+ * Universiad de La Laguna, Santa Cruz de Tenerife, España.
+ */
 import javafx.geometry.Point2D;
 
+/**
+ * Clase con un conjunto de ecuaciones para el movimiento parabolico.
+ * @author Sabato
+ *
+ */
 public class EcuacionesMovimientoParabolico {
 	/**
 	 * Calcula la posicion en un tiempo dado. //Ojo con el signo de la gravedad.

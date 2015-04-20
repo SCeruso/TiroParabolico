@@ -11,12 +11,16 @@ import java.awt.Graphics;
 import java.awt.Point;
 
 import javafx.geometry.Point2D;
-
+/**
+ * Clase ocupada de dibujar un punto siguiendo una transformacion de coordenadas.
+ * @author Sabato
+ *
+ */
 public class GraphicPoint {
-	private Point2D point;
-	private Color color;
-	private int radius;
-	private CoordinatesTransformer transformer;
+	private Point2D point;								// Coordenadas reales del punto a dibujar (luego de aplicar transformacion).
+	private Color color;								// Color.
+	private int radius;									// Radio.
+	private CoordinatesTransformer transformer;			// Transformador de coordenadas.
 	
 	public GraphicPoint(Point2D p, Color c, int r, CoordinatesTransformer ctransformer) {
 		setTransformer(ctransformer);
@@ -26,6 +30,11 @@ public class GraphicPoint {
 		
 	}
 
+	/**
+	 * True si el punto ha sido clickeado por las coordenadas del clickPos.
+	 * @param clickPos
+	 * @return
+	 */
 	public boolean isClicked(Point2D clickPos) {
 		if (getRadius() > getPoint().distance(clickPos))
 			return true;
@@ -37,6 +46,11 @@ public class GraphicPoint {
 		g.fillOval((int)(getPoint().getX() - getRadius() * getTransformer().getEscala()), (int)(getPoint().getY() - getRadius() * getTransformer().getEscala()), 
 				(int)(getRadius() * 2 * getTransformer().getEscala()), (int)(getRadius() * 2 * getTransformer().getEscala()));
 	}
+	
+	/**
+	 * Getters y setters.
+	 * @return
+	 */
 	public Point2D getPoint() {
 		return point;
 	}

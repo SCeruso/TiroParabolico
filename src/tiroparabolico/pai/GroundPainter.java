@@ -1,11 +1,20 @@
 package tiroparabolico.pai;
-
+/**
+ * @author Sabato Ceruso
+ * mail: sab7093@gmail.com
+ * Programación de aplicaciones interactivas.
+ * Universiad de La Laguna, Santa Cruz de Tenerife, España.
+ */
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-
+/**
+ * Clase ocupada de dibujar un degradado color tierra para el suelo. 
+ * @author Sabato
+ *
+ */
 public class GroundPainter {
 	private Color color1 = new Color(71, 4, 4); 
 	private Color color2 = new Color(24,139,15);   

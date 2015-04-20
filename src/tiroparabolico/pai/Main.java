@@ -1,5 +1,10 @@
 package tiroparabolico.pai;
-
+/**
+ * @author Sabato Ceruso
+ * mail: sab7093@gmail.com
+ * Programación de aplicaciones interactivas.
+ * Universiad de La Laguna, Santa Cruz de Tenerife, España.
+ */
 import javax.swing.JFrame;
 
 

@@ -1,9 +1,19 @@
 package tiroparabolico.pai;
-
+/**
+ * @author Sabato Ceruso
+ * mail: sab7093@gmail.com
+ * Programación de aplicaciones interactivas.
+ * Universiad de La Laguna, Santa Cruz de Tenerife, España.
+ */
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+/**
+ * Panel ocupado de dibujar el suelo.
+ * @author Sabato
+ *
+ */
 public class GroundPanel extends JPanel {
 	private GroundPainter groundPainter;
 	

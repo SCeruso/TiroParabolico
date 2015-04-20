@@ -1,5 +1,10 @@
 package tiroparabolico.pai;
-
+/**
+ * @author Sabato Ceruso
+ * mail: sab7093@gmail.com
+ * Programación de aplicaciones interactivas.
+ * Universiad de La Laguna, Santa Cruz de Tenerife, España.
+ */
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -15,13 +20,13 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class SkyPanel extends JPanel {
-	private SkyPainter sky;
-	private ProyectilGrafico proyectil;
-	private Timer temporizador;
-	private GraphicAngleSelector selector;
-	private ArrayList<ProyectilGrafico> proyectiles;
-	private double escala;
-	private boolean primerDisparo;
+	private SkyPainter sky;									// Clase para pintar el cielo.
+	private ProyectilGrafico proyectil;						// Proyectil grafico.
+	private Timer temporizador;								// Temporizador para animaciones.
+	private GraphicAngleSelector selector;					// Sistema de seleccion de angulos.
+	private ArrayList<ProyectilGrafico> proyectiles;		// Proyectiles que ya han sido disparados.
+	private double escala;									// Escala para reducir el espacio recorrido.
+	private boolean primerDisparo;							// True si no se ha disparado aun.
 	public final static double DEFAULT_SCALE = 1.0;
 	public final static double DEFAULT_TIME_UNIT = 0.2; 
 	
@@ -41,6 +46,7 @@ public class SkyPanel extends JPanel {
 		this.addMouseListener(drag);
 		this.addMouseMotionListener(drag);
 	}
+	
 	protected void paintComponent(Graphics g){ 
 		super.paintComponent(g.create());
 		updateSizes();
@@ -50,7 +56,9 @@ public class SkyPanel extends JPanel {
 		getProyectil().paint(g.create());
 		getSelector().paint(g.create());
 	}
-	
+	/**
+	 * Reinicia todos los elementos.
+	 */
 	public void reset() {
 		getProyectiles().clear();
 		setProyectil(new ProyectilGrafico(new Point2D(100, 200)));
@@ -61,7 +69,10 @@ public class SkyPanel extends JPanel {
 		setEscala(DEFAULT_SCALE);
 		repaint();
 	}
-	
+	/**
+	 * Pone a true para imprimir recorridos.
+	 * @param b
+	 */
 	public void setRecorrido(boolean b) {
 		getProyectil().setVerRecorrido(b);
 		for (int i = 0; i < getProyectiles().size(); i++)
@@ -73,7 +84,9 @@ public class SkyPanel extends JPanel {
 		getSky().setWidth(getWidth());
 		getSky().setHeight((int)(getHeight() * 0.8));
 	}
-	
+	/**
+	 * Calcula el alcance del primer proyectil.
+	 */
 	private void calcularAlcance() {
 		double i = DEFAULT_TIME_UNIT;
 		Double x = 0.0;
@@ -94,6 +107,10 @@ public class SkyPanel extends JPanel {
 		
 	}
 	
+	/**
+	 * Getters y setters.
+	 * @return
+	 */
 	private SkyPainter getSky() {
 		return sky;
 	}
@@ -162,7 +179,12 @@ public class SkyPanel extends JPanel {
 		this.escala = escala;
 		getProyectil().setEscala(escala);
 	}
-
+	/**
+	 * Temporizador para animar los proyectiles, si detecta una colision deja de mover el proyectil
+	 * y lo pasa a la lista de proyectiles ya disparados.
+	 * @author Sabato
+	 *
+	 */
 	class TimerHandler implements ActionListener {
 
 		@Override
@@ -194,6 +216,11 @@ public class SkyPanel extends JPanel {
 		}
 		
 	}
+	/**
+	 * Clase para gestionar el reposicionamiento y cambio de angulos.
+	 * @author Sabato
+	 *
+	 */
 	class DragHandler implements MouseMotionListener, MouseListener {
 		boolean dragging = false;
 		boolean draggingAngle = false;
