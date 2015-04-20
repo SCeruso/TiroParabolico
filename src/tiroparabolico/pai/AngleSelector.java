@@ -50,6 +50,15 @@ public class AngleSelector {
 		this.angulo = angulo;
 		updateExtremo();
 	}
+	
+	public void setAngulo(Point2D p) {
+		Double newAngle = Math.toDegrees(Math.atan(p.getY() / p.getX()));
+		if (p.getX() < 0 && p.getY() > 0)
+			newAngle = 180 + newAngle;
+		else if (p.getX() < 0 && p.getY() < 0)
+			newAngle = 180 + newAngle;
+		setAngulo(newAngle);
+	}
 	public int getModulo() {
 		return modulo;
 	}

@@ -34,7 +34,8 @@ public class GraphicPoint {
 	}
 	public void drawPoint(Graphics g) {
 		g.setColor(color);
-		g.fillOval((int)getPoint().getX() - getRadius(), (int)getPoint().getY() - getRadius(), getRadius() * 2, getRadius() * 2);
+		g.fillOval((int)(getPoint().getX() - getRadius() * getTransformer().getEscala()), (int)(getPoint().getY() - getRadius() * getTransformer().getEscala()), 
+				(int)(getRadius() * 2 * getTransformer().getEscala()), (int)(getRadius() * 2 * getTransformer().getEscala()));
 	}
 	public Point2D getPoint() {
 		return point;

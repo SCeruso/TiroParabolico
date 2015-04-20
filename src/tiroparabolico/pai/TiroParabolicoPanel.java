@@ -3,12 +3,12 @@ package tiroparabolico.pai;
 
 
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 
 public class TiroParabolicoPanel extends JPanel {
 	private SkyPanel skyPanel;
@@ -20,6 +20,7 @@ public class TiroParabolicoPanel extends JPanel {
 		this.add(getSkyPanel());
 		setGroundPanel(new GroundPanel());
 		this.add(getGroundPanel());
+		
 	}
 	
 	protected void paintComponent(Graphics g){ 
@@ -29,7 +30,6 @@ public class TiroParabolicoPanel extends JPanel {
 	}
 	private void updateSizes() {
 		getSkyPanel().setSize(new Dimension(getWidth(),  (int)(getHeight() * 0.8)));
-
 	}
 	   
 	   

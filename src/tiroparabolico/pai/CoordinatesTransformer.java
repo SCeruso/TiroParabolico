@@ -18,7 +18,7 @@ public class CoordinatesTransformer {
 	 * @return
 	 */
 	public Point2D transform (Point2D point) {
-		return new Point2D ((int)( (getEscala() *point.getX() + getCoordX())), (int)(-point.getY()  + getCoordY()));
+		return new Point2D ((int)( (getEscala() *point.getX() + getCoordX())), (int)(/*getEscala() **/-point.getY()  + getCoordY()));
 	}
 	/**
 	 * Transforma del sistema real al ficticio.

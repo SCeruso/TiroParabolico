@@ -1,7 +1,9 @@
 package tiroparabolico.pai;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Polygon;
 
 import javafx.geometry.Point2D;
@@ -11,17 +13,22 @@ public class ProyectilGrafico extends Proyectil {
 	private GraphicPoint grafico;
 	private double escala;
 	private Polygon recorrido;
+	private boolean verRecorrido;
+	private Color colorProyectil;
+	private Color colorTrayectoria;
 	
 	public final static int RADIO = 15;
+	public final static double STROKE = 10;
 	
 	public ProyectilGrafico(Point2D pos) {
 		super(new Point2D(0,0));
-		setEscala(SkyPanel.DEFAULT_SCALE);
-		setEscala(1);
+		setVerRecorrido(true);
 		setGrafico(new GraphicPoint(new Point2D(0, 0), Color.RED, RADIO, 
 				new CoordinatesTransformer((int)pos.getX(), (int)pos.getY(), getEscala())));
 		setRecorrido(new Polygon());
-		addPoint(getGrafico().getTransformer().transform(getPosActual()));
+		setEscala(SkyPanel.DEFAULT_SCALE);
+		setColorProyectil(Color.RED);
+		setColorTrayectoria(Color.BLUE);
 	}
 	
 	public void setPosition(Point2D pos) {
@@ -34,11 +41,17 @@ public class ProyectilGrafico extends Proyectil {
 		
 		
 	}
-	public void paint(Graphics g) {
-		getGrafico().setPoint(getPosActual());
-		getGrafico().drawPoint(g);
+	public void paint(Graphics g1) {
+		Graphics2D g = (Graphics2D) g1;
 		
-		g.drawPolyline(getRecorrido().xpoints, getRecorrido().ypoints, getRecorrido().npoints);
+		getGrafico().setPoint(getPosActual());
+		if (isVerRecorrido()) {
+			g.setStroke(new BasicStroke((float)(STROKE * getGrafico().getTransformer().getEscala())));
+			g.setColor(getColorTrayectoria());
+			g.drawPolyline(getRecorrido().xpoints, getRecorrido().ypoints, getRecorrido().npoints);
+		}
+		getGrafico().drawPoint(g.create());
+		
 	}
 
 	@Override
@@ -60,6 +73,9 @@ public class ProyectilGrafico extends Proyectil {
 		return getGrafico().getPoint().getY() + getGrafico().getRadius() >= height || 
 				getGrafico().getPoint().getY() - getGrafico().getRadius() <= 0;
 	}
+	public boolean groundCollision (int height) {
+		return getGrafico().getPoint().getY() + getGrafico().getRadius() >= height;
+	}
 	public GraphicPoint getGrafico() {
 		return grafico;
 	}
@@ -74,6 +90,7 @@ public class ProyectilGrafico extends Proyectil {
 
 	public void setEscala(double escala) {
 		this.escala = escala;
+		getGrafico().getTransformer().setEscala(escala);
 	}
 
 	public Polygon getRecorrido() {
@@ -82,6 +99,31 @@ public class ProyectilGrafico extends Proyectil {
 
 	public void setRecorrido(Polygon recorrido) {
 		this.recorrido = recorrido;
+	}
+
+	public boolean isVerRecorrido() {
+		return verRecorrido;
+	}
+
+	public void setVerRecorrido(boolean verRecorrido) {
+		this.verRecorrido = verRecorrido;
+	}
+
+	public Color getColorProyectil() {
+		return colorProyectil;
+	}
+
+	public void setColorProyectil(Color colorProyectil) {
+		this.colorProyectil = colorProyectil;
+		getGrafico().setColor(colorProyectil);
+	}
+
+	public Color getColorTrayectoria() {
+		return colorTrayectoria;
+	}
+
+	public void setColorTrayectoria(Color colorTrayectoria) {
+		this.colorTrayectoria = colorTrayectoria;
 	}
 	
 	

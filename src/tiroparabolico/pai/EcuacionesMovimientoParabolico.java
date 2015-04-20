@@ -40,4 +40,6 @@ public class EcuacionesMovimientoParabolico {
 		posFinal = new Point2D(coordX, coordY);
 		return posFinal;
 	}
+	
+
 }

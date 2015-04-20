@@ -28,8 +28,8 @@ public class GraphicAngleSelector extends AngleSelector{
 		
 		g2.setStroke(new BasicStroke(3));
 		g2.setColor(Color.BLACK);
-		System.out.println(getAngulo());
-		System.out.println("" + getExtremo().getX() + ", " + getExtremo().getY());
+		//System.out.println(getAngulo());
+		//System.out.println("" + getExtremo().getX() + ", " + getExtremo().getY());
 		g2.drawLine((int)p1.getX(), (int)p1.getY(), (int)p2.getX(), (int)p2.getY());
 		
 	}
@@ -49,4 +49,8 @@ public class GraphicAngleSelector extends AngleSelector{
 		this.distance = distance;
 	}
 	
+	public void setAngulo (Point2D p) {
+		Point2D p2 =getTransformer().untransform(new Point2D(p.getX(), p.getY()));
+		super.setAngulo(p2);
+	}
 }

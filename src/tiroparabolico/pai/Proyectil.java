@@ -37,6 +37,10 @@ public class Proyectil {
 		Double mod = Math.sqrt(Math.pow(getVelInicial().getX(), 2) +  Math.pow(getVelInicial().getY(), 2));
 		setVelInicial(angulo, mod);
 	}
+	
+	public Double getModuloVelInicial() {
+		return getVelInicial().magnitude();
+	}
 	/**
 	 * Getters y Setter.
 	 * @return
